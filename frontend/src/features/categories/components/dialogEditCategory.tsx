@@ -1,7 +1,6 @@
 import { pathCategory } from "@/services/category.services";
 import { useState } from "react";
 import { Dialog, Button, Flex,Text, TextField,} from "@radix-ui/themes";
-import path from "path";
 
 type DialogCategoryProps = {
   getCategoriesData: Function;
@@ -38,7 +37,7 @@ const DialogEdit = ({ getCategoriesData,id,category_name }: DialogCategoryProps)
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <Button size="1">Edit</Button>
+        <Button size="1" color="orange" variant="soft">Edit</Button>
       </Dialog.Trigger>
 
       <Dialog.Content maxWidth="450px">
@@ -76,6 +75,6 @@ const DialogEdit = ({ getCategoriesData,id,category_name }: DialogCategoryProps)
         </Flex>
       </Dialog.Content>
     </Dialog.Root>
-  );
+  )
 };
 export default DialogEdit
