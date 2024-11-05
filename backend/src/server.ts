@@ -8,6 +8,7 @@ import { env } from "@common/utils/envConfig";
 import errorHandler from "@common/middleware/errorHandler";
 import { categoryRouter } from "@modules/categories/categoryRouter";
 import { userRouter } from "@modules/users/userRouter";
+import { productRouter } from "@modules/products/productRouter";
 
 const logger = pino({ name: "server start" });
 const app = express();
@@ -22,6 +23,7 @@ app.use(helmet());
 
 // Routes
 app.use("/v1/category", categoryRouter);
+app.use("/v1/products", productRouter);
 app.use("/v1/user", userRouter);
 
 // Error handlers
