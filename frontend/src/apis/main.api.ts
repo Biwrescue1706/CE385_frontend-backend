@@ -4,7 +4,11 @@ import { appConfig } from "@/configs/app.config";
 const mainApi = axios.create({
   baseURL: appConfig.baseApi,
   timeout: 10000,
-  validateStatus: (status) => status < 500,
+  withCredentials: true,
+  validateStatus: (status) => {
+    // Accept all statuses except for 401 and 500
+    return status !== 401 && status !== 500; // Reject 401 and 500 statuses
+  },
 });
 
 // Add a request interceptor
@@ -33,15 +37,11 @@ mainApi.interceptors.response.use(
     return response;
   },
   function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
-    // if (error?.response?.status === 401) {
-    //   console.log(window.location.pathname);
-    //   localStorage.removeItem("token");
-    //   if (window.location.pathname !== "/auth/sign-in") {
-    //     window.location.replace("/auth/sign-in");
-    //   }
-    // }
+    if (error?.response?.status === 401) {
+      if (window.location.pathname !== "/login") {
+        window.location.replace("/login");
+      }
+    }
     return Promise.reject(error);
   }
 );
