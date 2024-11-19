@@ -1,4 +1,4 @@
-import { deleteCategory } from "@/services/category.services";
+import { deleteCategory } from "@/services/category.service";
 import { AlertDialog, Button, Flex,} from "@radix-ui/themes";
 
 type DialogCategoryProps = {

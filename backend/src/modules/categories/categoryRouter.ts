@@ -10,7 +10,7 @@ import authenticateToken from "@common/middleware/authenticateToken";
 export const categoryRouter = (() => {
     const router = express.Router();
 
-    router.get("/get", authenticateToken, async (req: Request, res: Response) => {
+    router.get("/get", async (req: Request, res: Response) => {
         const ServiceResponse = await categoryService.findAll();
         handleServiceResponse(ServiceResponse, res);
     })
