@@ -21,14 +21,14 @@ export const categoryRouter = (() => {
         handleServiceResponse(ServiceResponse, res);
     })
 
-    router.patch("/update", validateRequest(UpdateCategorySchema), async( req: Request, res: Response) => {
+    router.patch("/update",authenticateToken,authorizeAdmin, validateRequest(UpdateCategorySchema), async( req: Request, res: Response) => {
         const { id } = req.body;
         const payload = req.body;
         const ServiceResponse = await categoryService.update(id, payload);
         handleServiceResponse(ServiceResponse, res);
     })
 
-    router.delete("/delete/:id", validateRequest(GetCategorySchema), async (req: Request, res: Response) => {
+    router.delete("/delete/:id",authenticateToken,authorizeAdmin, validateRequest(GetCategorySchema), async (req: Request, res: Response) => {
         const { id } = req.params;
         const ServiceResponse = await categoryService.delete(id);
         handleServiceResponse(ServiceResponse, res);
