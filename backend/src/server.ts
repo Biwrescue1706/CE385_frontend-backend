@@ -22,8 +22,8 @@ app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
 app.use(helmet());
 
 // Routes
-app.use("/v1/category", categoryRouter);
-app.use("/v1/products", productRouter);
+app.use("/category", categoryRouter);
+app.use("/products", productRouter);
 app.use("/v1/user", userRouter);
 
 // Error handlers

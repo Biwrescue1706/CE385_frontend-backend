@@ -1,16 +1,48 @@
 import { useEffect, useState } from "react";
 import { postLogin, getAuthStatus } from "@/services/auth.service";
 import { useNavigate } from "react-router-dom";
+import { error } from "console";
 
 export default function LoginFeature() {
-  const [username, setUsername] = useState(""); 
-  const [password, setPassword] = useState(""); 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
- 
-
+  useEffect(()=>{
+    getAuthStatus()
+    .then((response)=>{
+      if ( response.statusCode === 200){
+        navigate("/categories");
+      }
+    })
+    .catch((error)=>{
+      console.error("Error checking authentication status : ",error.message);
+    });
+  },[navigate]);
+  
   const handleLogin = () => {
-   
+    if (!username) {
+      alert("Please enter a username.");
+      return;
+    }
+    if(!password){
+      alert("Please enter a password.");
+      return;     
+    }
+    postLogin({ username : username , password : password})
+    .then((response)=>{
+      if(response.statusCode === 200) {
+        navigate("/categories");
+      }else if (response.statusCode === 400){
+        alert(response.message);
+      }else{
+        alert(`Unexpected error : ${response.message}`);
+      }
+    })
+    .catch ((error) =>{
+      console.log("Error createing category : ",error.response?.data||error.message);
+      alert("Failed to create category. Please try again");
+    });
   };
 
 

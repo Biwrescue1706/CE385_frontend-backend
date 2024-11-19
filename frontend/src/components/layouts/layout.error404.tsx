@@ -38,7 +38,7 @@ export default function Error404() {
                 <p className="mb-4 text-2xl font-bold text-gray-600">ไม่พบหน้าที่คุณค้นหา</p>
                 <p className="mt-4 text-gray-600">
                     คลิกเพื่อกลับไปที่{' '}
-                    <a href="/" className="text-blue-500">
+                    <a href="/categories" className="text-blue-500">
                         home
                     </a>
                     .
