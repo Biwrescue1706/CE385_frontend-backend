@@ -126,4 +126,17 @@ export const userService = {
             );
         }
     },
+    authStatus : (req: any) => {
+        try {
+
+        } catch (ex) {
+            const errorMessage = "Error auth Status : " + (ex as Error).message;
+            return new ServiceResponse (
+                ResponseStatus.Failed,
+                errorMessage,
+                null,
+                StatusCodes.INTERNAL_SERVER_ERROR
+            );
+        }
+    },
 }

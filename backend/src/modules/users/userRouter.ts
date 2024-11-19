@@ -1,8 +1,8 @@
-import express, {Request, Response, Router} from "express";
+import express, { Request, Response, Router } from "express";
 
 import { handleServiceResponse, validateRequest } from "@common/utils/httpHandlers";
 import { userService } from "@modules/users/userService";
-import { CreateUserSchema, GetUserSchema, LoginUserSchema} from "@modules/users/userModel";
+import { CreateUserSchema, GetUserSchema, LoginUserSchema } from "@modules/users/userModel";
 
 
 export const userRouter = (() => {
@@ -21,7 +21,7 @@ export const userRouter = (() => {
 
     router.post("/login", validateRequest(LoginUserSchema), async (req: Request, res: Response) => {
         const payload = req.body;
-        const ServiceResponse = await userService.login(payload,res);
+        const ServiceResponse = await userService.login(payload, res);
         handleServiceResponse(ServiceResponse, res);
     })
 
@@ -29,6 +29,11 @@ export const userRouter = (() => {
         const ServiceResponse = await userService.logout(res);
         handleServiceResponse(ServiceResponse, res);
     })
+
+    router.get("auth-status", async (req: Request, res: Response) => {
+        const ServiceResponse = await userService.authStatus(req);
+        handleServiceResponse(ServiceResponse, res);
+    })    
 
     return router;
 })();
