@@ -4,7 +4,7 @@ import { getCategories } from "@/services/category.service";
 import { TypeCategoriesAll } from "@/types/response/response.category";
 import DialogAdd from "./components/dialogAddCategory";
 import DialogEdit from "./components/dialogEditCategory";
-import AlertDialogDelete from "./components/alertDialogDeleteCategory";
+import AlertDialogDelete from "./components/dialogDeleteCategory";
 
 export default function CategoriesFeature() {
     const [categories, setCategories] = useState<TypeCategoriesAll[]>([]);
