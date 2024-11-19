@@ -1,4 +1,6 @@
 import { Outlet } from "react-router-dom";
+import NavbarMain from "./navbars/navbar.main";
+import SidebarMain from "./sidebars/sidebar.main";
 import { useEffect } from "react";
 import { getAuthStatus } from "@/services/auth.service";
 import { useNavigate } from "react-router-dom";
