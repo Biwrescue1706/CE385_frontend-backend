@@ -30,7 +30,7 @@ export const userRouter = (() => {
         handleServiceResponse(ServiceResponse, res);
     })
 
-    router.get("auth-status", async (req: Request, res: Response) => {
+    router.get("/auth-status", async (req: Request, res: Response) => {
         const ServiceResponse = await userService.authStatus(req);
         handleServiceResponse(ServiceResponse, res);
     })    

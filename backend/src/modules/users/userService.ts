@@ -128,7 +128,21 @@ export const userService = {
     },
     authStatus : (req: any) => {
         try {
-
+            if(req.cookies.token){
+                return new ServiceResponse(
+                    ResponseStatus.Success,
+                    "Uesr authenticated Successfully",
+                    null,
+                    StatusCodes.OK
+                )
+            }else{
+                return new ServiceResponse(
+                    ResponseStatus.Success,
+                    "Authentication required",
+                    null,
+                    StatusCodes.UNAUTHORIZED
+                )
+            }
         } catch (ex) {
             const errorMessage = "Error auth Status : " + (ex as Error).message;
             return new ServiceResponse (
