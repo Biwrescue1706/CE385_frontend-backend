@@ -12,7 +12,7 @@ export default function LoginFeature() {
     getAuthStatus()
     .then((response)=>{
       if ( response.statusCode === 200){
-        navigate("/categories");
+        navigate("/home");
       }
     })
     .catch((error)=>{
@@ -32,7 +32,7 @@ export default function LoginFeature() {
     postLogin({ username : username , password : password})
     .then((response)=>{
       if(response.statusCode === 200) {
-        navigate("/categories");
+        navigate("/home");
       }else if (response.statusCode === 400){
         alert(response.message);
       }else{
