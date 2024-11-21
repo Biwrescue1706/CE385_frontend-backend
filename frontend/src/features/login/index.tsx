@@ -71,6 +71,23 @@ export default function LoginFeature() {
           >
             Login
           </button>
+                <div className="text-sm text-center space-y-2">
+        <button
+          onClick={() => navigate('/forgot-password')}
+          className="text-indigo-600 hover:text-indigo-500"
+        >
+          ลืมรหัสผ่าน?
+        </button>
+        <div>
+          <span className="text-gray-500">ยังไม่มีบัญชี? </span>
+          <button
+            onClick={() => navigate('/register')}
+            className="text-indigo-600 hover:text-indigo-500"
+          >
+            สมัครสมาชิก
+          </button>
+        </div>
+      </div>
         </div>
       </div>
     </div>
