@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { postLogin, getAuthStatus } from "@/services/auth.service";
 import { useNavigate } from "react-router-dom";
-import { error } from "console";
 
 export default function LoginFeature() {
   const [username, setUsername] = useState("");
